@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Abeera 💖</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #f8fafc 0%, #ffe0ec 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      min-width: 320px;
+    }
+    h1 {
+      color: #e75480;
+      margin-bottom: 1.5rem;
+    }
+    .question {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      font-size: 2rem;
+      padding: 1.2rem 4rem;
+      margin: 0 2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-yes {
+      background: #e75480;
+      color: #fff;
+    }
+    .btn-no {
+      background: #f3f3f3;
+      color: #e75480;
+      border: 1px solid #e75480;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hi Beeeruuuu! 💖</h1>
+    <div id="love-section">
+      <div class="question">Do you love me?</div>
+      <button class="btn btn-yes" id="yes-btn">YES</button>
+      <button class="btn btn-no" id="no-btn">NO</button>
+    </div>
+    <div id="result-section" class="hidden">
+      <div class="question" id="result-message"></div>
+    </div>
+  </div>
+  <script>
+    const loveSection = document.getElementById('love-section');
+    const resultSection = document.getElementById('result-section');
+    const yesBtn = document.getElementById('yes-btn');
+    const noBtn = document.getElementById('no-btn');
+    const resultMessage = document.getElementById('result-message');
+
+    let noClickCount = 0;
+    const maxNoClicks = 20;
+
+    yesBtn.onclick = function() {
+      loveSection.classList.add('hidden');
+      resultSection.classList.remove('hidden');
+      resultMessage.textContent = 'I knew it! 💖';
+    };
+
+    noBtn.onclick = function() {
+      noClickCount++;
+      const scale = Math.max(1 - (noClickCount / maxNoClicks), 0.1);
+      if (noClickCount === 1) {
+        noBtn.textContent = 'Think again!';
+      } else if (noClickCount === 5) {
+        noBtn.textContent = 'Are you sure?';
+      } else if (noClickCount === 10) {
+        noBtn.textContent = 'Really? 😢';
+      } else if (noClickCount === 15) {
+        noBtn.textContent = 'No way!';
+      }
+      noBtn.style.transform = `scale(${scale})`;
+    };
+  </script>
+</body>
+</html>
